@@ -18,14 +18,18 @@
 
             <div class="product-info">
                 <h1>{{product}}</h1>
+                <p v-if="inStock">In Stock</p>
+                <p v-else>Out of Stock</p>
+                <span v-if="onSale">On Sale!</span>
             </div>               
         </div>            
     </div>
-
+    <!-- https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js -->
+    <!-- https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="main.js"></script>
 
-    ATUALIZADO 28/12 AULA 3
+    ATUALIZADO 28/12 AULA 4
 
 </body>
 </html>
