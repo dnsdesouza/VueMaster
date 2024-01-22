@@ -35,22 +35,22 @@
                Color:
                <ul>
                 <div v-for="variant in variants" :key="variant.variantId">
-                    <li>{{ variant.variantColor }}</li>
+                    <p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantColor }}</p>
                 </div>
                </ul>
-                
+               <button v-on:click="addToCart">Add to Cart</button>
 
-               
+               <div class="cart">
+                    <p>Cart({{cart}})</p>
+               </div>
 
             </div>               
         </div>            
     </div>
-    <!-- https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js -->
-    <!-- https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="main.js"></script>
 
->>>>>>>>>>>>>    ATUALIZADO 09/01 FAZER AULA 05
+>>>>>>>>>>>>>    ATUALIZADO 22/01 FAZER AULA 06
 
 </body>
 </html>
