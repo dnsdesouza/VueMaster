@@ -2,10 +2,10 @@
 var app = new Vue({
     el: '#app',
     data:{
+        brand:'Vue Masterfull',
         product: 'Socks',
-        image: './assets/vmSocks-green.jpg',
-        inventory: 8,
-        onSale: true,
+        SelectedVariant: 0,
+        inventory:10,
         details: ["80% cotton", "20% polyestesr", "Gender-neutral"],
 
         variants:[
@@ -13,12 +13,14 @@ var app = new Vue({
             {
                 variantId: 2235,
                 variantColor: 'green',
-                variantImage:'./assets/vmSocks-green.jpg'
+                variantImage:'./assets/vmSocks-green.jpg',
+                variantQuantity: 0
             },
             {
                 variantId: 2234,
                 variantColor: 'blue',
-                variantImage:'./assets/vmSocks-blue.jpg'
+                variantImage:'./assets/vmSocks-blue.jpg',
+                variantQuantity:10
             }
         ],
        
@@ -32,15 +34,31 @@ var app = new Vue({
             addToCart(){
                 this.cart +=1
             },
-            takeOutCart(){
+            takeOutCart(){                
                 if(this.cart > 0 ){
                     this.cart -=1
+                    this.inventory -=1
                 }else{
                     window.alert('CARRINHO ZERADO')
                 }
             },
-            updateProduct(variantImage){
-                this.image = variantImage
+            updateProduct(index){
+                this.SelectedVariant = index
+                console.log(index)
+                {{index}}
+            },
+                  
+        },
+
+        computed: {
+            title() {
+                return this.brand + ' '+ this.product
+            },
+            image(){
+                return this.variants[this.SelectedVariant].variantImage
+            },
+            inStock(){
+                return this.variants [this.SelectedVariant].variantQuantity
             }
         }
     

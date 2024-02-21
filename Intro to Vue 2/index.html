@@ -17,11 +17,17 @@
             </div>
 
             <div class="product-info">
-                <h1>{{product}}</h1>
+                <h1>{{title}}  </h1>
+                <p>Inventario  {{inventory}}</p>
+                
                 <p v-if="inventory > 10">In Stock</p>
                 <p v-else-if ="inventory <= 10 && inventory > 0">Almost in stock</p>
-                <span v-else="onSale">Out of Stock!</span>
-                <span v-if="onSale">On sale!</span>
+                <p v-else>Out of Stock!</p>
+
+                <span v-if="!inStock">NO sale!</span>
+                <span  v-if="inStock">On sale!</span>
+               
+                
               
                 <ul>
                     <li v-for="detail in details">{{ detail}}</li>
@@ -34,11 +40,17 @@
 
                Color:
                <ul>
-                <div v-for="variant in variants" :key="variant.variantId">
-                    <p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantColor }}</p>
+                <div v-for="(variant, index) in variants" 
+                     :key="variant.variantId"
+                      class="color-box"
+                      :style="{backgroundColor: variant.variantColor}"
+                      @mouseover="updateProduct(index)">
+                   
                 </div>
                </ul>
-               <button v-on:click="addToCart">Add to Cart</button>
+               <button v-on:click="addToCart" 
+                    :disabled="!inStock"
+                    :class="{disabledButton: !inStock}">Add to Cart</button>
                <button v-on:click="takeOutCart">Take out </button>
                <div class="cart">
                     <p>Cart({{cart}})</p>
@@ -50,7 +62,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="main.js"></script>
 
->>>>>>>>>>>>>    ATUALIZADO 20/02 FAZER AULA 06
+>>>>>>>>>>>>>    ATUALIZADO 21/02 FAZER AULA 08
 
 </body>
 </html>
